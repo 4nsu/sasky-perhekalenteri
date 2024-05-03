@@ -1,61 +1,66 @@
 <?php
 
-  require_once("globals.php");
+require_once("globals.php");
 
 ?>
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Perhekalenteri</title>
-  </head>
-  <body>
-    <header>
-      <h1>Perhekalenteri</h1>
-    </header>
-    <section>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="tyylit.css">
+        <title>Perhekalenteri</title>
+    </head>
 
-      <form action="kalenteri.php" method="GET" target="_blank">
+    <body>
+        <header>
+            <h1>Perhekalenteri</h1>
+        </header>
 
-        Vuosi: <input type="number" name="year" value="<?php echo date("Y"); ?>"><br>
+        <section>
+            <form action="kalenteri.php" method="GET" target="_blank">
 
-        Kuukausi:
-        <select name="month">
-        <?php
-          foreach($months as $key => $value) {
-            echo "<option value='$key'>$value</option>\n";
-          }
-        ?>
-        </select><br>
+                <label for="year">Vuosi:</label>
+                <input id="year" type="number" name="year" value="<?php echo date("Y"); ?>">
 
-        Otsikkofontti:
-        <select name="header">
-        <?php
-          foreach($headerfonts as $key => $value) {
-            echo "<option value='$key'>$value[name]</option>\n";
-          }
-        ?>
-        </select><br>
+                <label for="month">Kuukausi:</label>
+                <select id="month" name="month">
+                    <?php
+                    foreach($months as $key => $value) {
+                    echo "<option value='$key'>$value</option>\n";
+                    }
+                    ?>
+                </select>
 
-        Kuva:
-        <select name="bgimage">
-        <?php
-          foreach ($bgimages as $key => $value) {
-            echo "<option value='$key'>$value[name]</option>\n";
-          }
-        ?>
-        </select><br>
+                <label for="header">Otsikkofontti:</label>
+                <select id="header" name="header">
+                    <?php
+                    foreach($headerfonts as $key => $value) {
+                    echo "<option value='$key'>$value[name]</option>\n";
+                    }
+                    ?>
+                </select>
 
-        Perheenjäsenet:
-        <textarea name="names" rows="5"><?= $defaultnames ?></textarea><br>
+                <label for="bgimage">Kuva:</label>
+                <select id="bgimage" name="bgimage">
+                    <?php
+                    foreach ($bgimages as $key => $value) {
+                    echo "<option value='$key'>$value[name]</option>\n";
+                    }
+                    ?>
+                </select>
 
-        <input type="submit" value="Avaa kalenterisivu">
+                <label for="names">Perheenjäsenet:</label>
+                <textarea id="names" name="names" rows="5"><?= $defaultnames ?></textarea>
 
-      </form>
-    </section>
-    <footer>
-      <hr>
-      <div>perhekalenteri by ansu</div>
-    </footer>
-  </body>
+                <input type="submit" value="Avaa kalenterisivu">
+
+            </form>
+        </section>
+
+        <footer>
+            <hr>
+            <div>perhekalenteri by ansu</div>
+        </footer>
+    </body>
 </html>
